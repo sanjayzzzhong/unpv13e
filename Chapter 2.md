@@ -4,7 +4,7 @@
 
 * 图示
 
-  ![image-20200303161808179](/Users/sanjay/Documents/GitHub/STL/assets/image-20200303161808179.png)
+  ![image-20200303161808179](assets/image-20200303161808179.png)
 
 * 过程解析：
 
