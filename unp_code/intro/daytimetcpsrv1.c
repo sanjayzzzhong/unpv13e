@@ -5,8 +5,8 @@ int
 main(int argc, char **argv)
 {
 	int					listenfd, connfd;
-	socklen_t			len;
-	struct sockaddr_in	servaddr, cliaddr;
+	socklen_t			len; // 存放客户端的长度
+	struct sockaddr_in	servaddr, cliaddr; 	// 客户端的地址结构
 	char				buff[MAXLINE];
 	time_t				ticks;
 

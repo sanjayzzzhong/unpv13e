@@ -20,6 +20,7 @@ main(int argc, char **argv)
 
 	Listen(listenfd, LISTENQ);
 
+	// 父进程这里调用了signal函数
 	Signal(SIGCHLD, sig_chld);
 
 	for ( ; ; ) {

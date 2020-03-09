@@ -7,6 +7,7 @@ main(int argc, char **argv)
 	pid_t				childpid;
 	socklen_t			clilen;
 	struct sockaddr_in	cliaddr, servaddr;
+	// 信号处理函数使用wait
 	void				sig_chld(int);
 
 	listenfd = Socket(AF_INET, SOCK_STREAM, 0);

@@ -13,7 +13,7 @@ main(int argc, char **argv)
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family      = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	servaddr.sin_port        = htons(SERV_PORT);
+	servaddr.sin_port        = htons(SERV_PORT); // 9877
 
 	Bind(listenfd, (SA *) &servaddr, sizeof(servaddr));
 
@@ -24,8 +24,10 @@ main(int argc, char **argv)
 		connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
 
 		if ( (childpid = Fork()) == 0) {	/* child process */
+			// 子进程关闭监听fd
 			Close(listenfd);	/* close listening socket */
 			str_echo(connfd);	/* process the request */
+			// 接收完之后关闭
 			exit(0);
 		}
 		Close(connfd);			/* parent closes connected socket */
