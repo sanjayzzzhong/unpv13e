@@ -3,7 +3,7 @@
 void
 str_cli(FILE *fp, int sockfd)
 {
-	int			maxfdp1, stdineof;
+	int			maxfdp1, stdineof; // 使用eof
 	fd_set		rset;
 	char		buf[MAXLINE];
 	int		n;

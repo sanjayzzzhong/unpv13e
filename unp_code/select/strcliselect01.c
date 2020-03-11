@@ -9,10 +9,11 @@ str_cli(FILE *fp, int sockfd)
 
 	FD_ZERO(&rset);
 	for ( ; ; ) {
-		FD_SET(fileno(fp), &rset);
-		FD_SET(sockfd, &rset);
+		// fileno 获取文件流 所用的 文件描述符
+		FD_SET(fileno(fp), &rset); 	// 监听标准读
+		FD_SET(sockfd, &rset);	// 监听sockfd
 		maxfdp1 = max(fileno(fp), sockfd) + 1;
-		Select(maxfdp1, &rset, NULL, NULL, NULL);
+		Select(maxfdp1, &rset, NULL, NULL, NULL);	// 最后time_out设置为null，阻塞
 
 		if (FD_ISSET(sockfd, &rset)) {	/* socket is readable */
 			if (Readline(sockfd, recvline, MAXLINE) == 0)
